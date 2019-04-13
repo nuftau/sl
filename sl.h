@@ -7,19 +7,60 @@
  *========================================
  */
 
-#define D51HEIGHT	10
+#define D51HEIGHT	36
 #define D51FUNNEL	 7
-#define D51LENGTH	83
-#define D51PATTERNS	 6
+#define D51LENGTH	150
+#define D51PATTERNS	 1
 
 
-#define D51STR1  "      ====        ________                ___________ "
-#define D51STR2  "  _D _|  |_______/        \\__I_I_____===__|_________| "
-#define D51STR3  "   |(_)---  |   H\\________/ |   |        =|___ ___|   "
-#define D51STR4  "   /     |  |   H  |  |     |   |         ||_| |_||   "
-#define D51STR5  "  |      |  |   H  |__--------------------| [___] |   "
-#define D51STR6  "  | ________|___H__/__|_____/[][]~\\_______|       |   "
-#define D51STR7  "  |/ |   |-----------I_____I [][] []  D   |=======|__ "
+
+                                                                                                
+#define D51STR0 "                                                                                                "
+#define D51STR1 "                      `.                 "
+#define D51STR2 "                     ``.:`                        ````                 "
+#define D51STR3 "                     ````--                   .:-......                 "
+#define D51STR4 "                     `.```/:                `...`.`....                 "
+#define D51STR5 "                     `.```.+/.            ``````````..`                 "
+#define D51STR6 "                      `````/o+.          -`````````...                 "
+#define D51STR7 "                      ```` -oo+.        ::` ```````..`                 "
+#define D51STR8 "                      ```.`.+oo/       :/` ``..````..                 "
+#define D51STR9 "                      ```-.`/oo+.     -+-```....```.`                 "
+#define D51STR10 "                       ``...+oo+:    -++.`..--.``..`                                        "
+#define D51STR11 "                        ``.-+ooo+`  .+o+.-:/:.....`             `````                        "
+#define D51STR12 "                         `.:+ooo+. -+o++-++-.-.``        ``.-::////+////:-..`                 "
+#define D51STR13 "                         `./++ooooossss+-o:--`       `.-://+oooooooosssooooo+:-`                 "
+#define D51STR14 "                        `:+ooyhyyssooss+::--`    `.-:/+oosssyssssyysyyysyyssooo+:.                 "
+#define D51STR15 "                       -+ssyshssoo/--:/o+/-` `.-/+oosyyhhyyhhyyhhhhyhhhyyssosso+++:`                 "
+#define D51STR16 "                      `:ossoosoo+//o/.:/+:.-:+ssyyhhhhhhhhhdhhhhhhhhhhysssssyso///+/.                 "
+#define D51STR17 "                      `/osysyso+--hNy`::/:.+++osyhhhhhhhhhhdhhhhhhhdhssyhyssso+//:::-`                 "
+#define D51STR18 "                      `/osssys+/.-yds`/+/:.:/+/+oshddhhhhhhhhhhhhhhysshhssooo+/-------                 "
+#define D51STR19 "                      .:++ooo+/:.`:++:+///-/oo+oosyhhhhhhhhhhyhhhyyoshhsooooo/-..----:.                 "
+#define D51STR20 "                     `-//+oo+/::-:/++/+//:.oso+osossyhhhhhhyyyyysoosydyo+++++:....--:/.                 "
+#define D51STR21 "                    `-:/+ooo+/+/:////:///.:yssooo++osyyhhyyyyso+///oydo+///::-.....-:/:                 "
+#define D51STR22 "                   ``.-+++++//+o+/:::::-./ssssoo+//++ossyooso+/:::/oyy+/::--....`..:/+:`                 "
+#define D51STR23 "                   ..``:/-.`:+++//:--.`-++ooo++//:://+++o+///::-:::/+s/:---..````.-:+/:.                 "
+#define D51STR24 "                   .-.``-.`-//:-````.-/++++++///+////://+/:::::-----:/:--.``````.://://`                 "
+#define D51STR25 "                   `-:-.......``.-+++/////////++oo+/:::///:--::--....````````.../+so-:.                 "
+#define D51STR26 "                   `----:://++/:///////////://:/+s+/::-::-----...```       ``-` ..-:.-                 "
+#define D51STR27 "                  ...--.--::-::::////////:::/:-::so/:-----....``              ````                 "
+#define D51STR28 "              `.-/oo:-..--:::::::/+++++/:--:/::::oo/:---..```                                    "
+#define D51STR29 "       ``...-/+/+oso/:-``.----:/+o+++//:---//:-::/:-..``                                        "
+#define D51STR30 "   ``....:/+/+ooo+o+/::-` `.-:/ooso+//:---::--.-..                 "
+#define D51STR31 " `...-----:-:++:-``      `./+ossyyyyyhsso+/:..``                 "
+#define D51STR32 "  ` `-.`````          `-/+ssyyysssyyso/:.``                 "
+#define D51STR33 "                   `-:/++sssssso/:.`                 "
+#define D51STR34 "                  `-+++ooo+o/-`                 "
+#define D51STR35 "                   .-.-:.``                 "
+#define D51STR36 "                                                                                                "
+                                                                                                    
+
+//define D51STR1  "      ====        ________                ___________ "
+//define D51STR2  "  _D _|  |_______/        \\__I_I_____===__|_________| "
+//define D51STR3  "   |(_)---  |   H\\________/ |   |        =|___ ___|   "
+//define D51STR4  "   /     |  |   H  |  |     |   |         ||_| |_||   "
+//define D51STR5  "  |      |  |   H  |__--------------------| [___] |   "
+//define D51STR6  "  | ________|___H__/__|_____/[][]~\\_______|       |   "
+//define D51STR7  "  |/ |   |-----------I_____I [][] []  D   |=======|__ "
 
 #define D51WHL11 "__/ =| o |=-~~\\  /~~\\  /~~\\  /~~\\ ____Y___________|__ "
 #define D51WHL12 " |/-=|___|=    ||    ||    ||    |_____/~\\___/        "

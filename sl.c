@@ -53,7 +53,7 @@ int my_mvaddstr(int y, int x, char *str);
 
 int ACCIDENT  = 0;
 int LOGO      = 0;
-int FLY       = 0;
+int FLY       = 1;
 int C51       = 0;
 
 int my_mvaddstr(int y, int x, char *str)
@@ -84,11 +84,11 @@ int main(int argc, char *argv[])
 {
     int x, i;
 
-    for (i = 1; i < argc; ++i) {
-        if (*argv[i] == '-') {
-            option(argv[i] + 1);
-        }
-    }
+    //for (i = 1; i < argc; ++i) {
+    //    if (*argv[i] == '-') {
+    //        option(argv[i] + 1);
+    //    }
+    //}
     initscr();
     signal(SIGINT, SIG_IGN);
     noecho();
@@ -96,20 +96,19 @@ int main(int argc, char *argv[])
     nodelay(stdscr, TRUE);
     leaveok(stdscr, TRUE);
     scrollok(stdscr, FALSE);
-
     for (x = COLS - 1; ; --x) {
         if (LOGO == 1) {
-            if (add_sl(x) == ERR) break;
+       //     if (add_sl(x) == ERR) break;
         }
         else if (C51 == 1) {
-            if (add_C51(x) == ERR) break;
+      //      if (add_C51(x) == ERR) break;
         }
         else {
             if (add_D51(x) == ERR) break;
         }
         getch();
         refresh();
-        usleep(40000);
+        usleep(30000);
     }
     mvcur(0, COLS - 1, LINES - 1, 0);
     endwin();
@@ -117,53 +116,14 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-
-int add_sl(int x)
-{
-    static char *sl[LOGOPATTERNS][LOGOHEIGHT + 1]
-        = {{LOGO1, LOGO2, LOGO3, LOGO4, LWHL11, LWHL12, DELLN},
-           {LOGO1, LOGO2, LOGO3, LOGO4, LWHL21, LWHL22, DELLN},
-           {LOGO1, LOGO2, LOGO3, LOGO4, LWHL31, LWHL32, DELLN},
-           {LOGO1, LOGO2, LOGO3, LOGO4, LWHL41, LWHL42, DELLN},
-           {LOGO1, LOGO2, LOGO3, LOGO4, LWHL51, LWHL52, DELLN},
-           {LOGO1, LOGO2, LOGO3, LOGO4, LWHL61, LWHL62, DELLN}};
-
-    static char *coal[LOGOHEIGHT + 1]
-        = {LCOAL1, LCOAL2, LCOAL3, LCOAL4, LCOAL5, LCOAL6, DELLN};
-
-    static char *car[LOGOHEIGHT + 1]
-        = {LCAR1, LCAR2, LCAR3, LCAR4, LCAR5, LCAR6, DELLN};
-
-    int i, y, py1 = 0, py2 = 0, py3 = 0;
-
-    if (x < - LOGOLENGTH)  return ERR;
-    y = LINES / 2 - 3;
-
-    if (FLY == 1) {
-        y = (x / 6) + LINES - (COLS / 6) - LOGOHEIGHT;
-        py1 = 2;  py2 = 4;  py3 = 6;
-    }
-    for (i = 0; i <= LOGOHEIGHT; ++i) {
-        my_mvaddstr(y + i, x, sl[(LOGOLENGTH + x) / 3 % LOGOPATTERNS][i]);
-        my_mvaddstr(y + i + py1, x + 21, coal[i]);
-        my_mvaddstr(y + i + py2, x + 42, car[i]);
-        my_mvaddstr(y + i + py3, x + 63, car[i]);
-    }
-    if (ACCIDENT == 1) {
-        add_man(y + 1, x + 14);
-        add_man(y + 1 + py2, x + 45);  add_man(y + 1 + py2, x + 53);
-        add_man(y + 1 + py3, x + 66);  add_man(y + 1 + py3, x + 74);
-    }
-    add_smoke(y - 1, x + LOGOFUNNEL);
-    return OK;
-}
-
-
 int add_D51(int x)
 {
-    static char *d51[D51PATTERNS][D51HEIGHT + 1]
-        = {{D51STR1, D51STR2, D51STR3, D51STR4, D51STR5, D51STR6, D51STR7,
-            D51WHL11, D51WHL12, D51WHL13, D51DEL},
+    static char *d51[D51HEIGHT + 1]
+        = {D51STR0, D51STR1, D51STR2, D51STR3, D51STR4, D51STR5, D51STR6, D51STR7, D51STR8, D51STR9,
+        D51STR10, D51STR11, D51STR12, D51STR13, D51STR14, D51STR15, D51STR16, D51STR17, D51STR18, D51STR19,
+        D51STR20, D51STR21, D51STR22, D51STR23, D51STR24, D51STR25, D51STR26, D51STR27, D51STR28, D51STR29,
+        D51STR30, D51STR31, D51STR32, D51STR33, D51STR34, D51STR35, D51STR36
+/*            D51WHL11, D51WHL12, D51WHL13, D51DEL},
            {D51STR1, D51STR2, D51STR3, D51STR4, D51STR5, D51STR6, D51STR7,
             D51WHL21, D51WHL22, D51WHL23, D51DEL},
            {D51STR1, D51STR2, D51STR3, D51STR4, D51STR5, D51STR6, D51STR7,
@@ -173,32 +133,40 @@ int add_D51(int x)
            {D51STR1, D51STR2, D51STR3, D51STR4, D51STR5, D51STR6, D51STR7,
             D51WHL51, D51WHL52, D51WHL53, D51DEL},
            {D51STR1, D51STR2, D51STR3, D51STR4, D51STR5, D51STR6, D51STR7,
-            D51WHL61, D51WHL62, D51WHL63, D51DEL}};
-    static char *coal[D51HEIGHT + 1]
+            D51WHL61, D51WHL62, D51WHL63, D51DEL}*/};
+/*    static char *coal[D51HEIGHT + 1]
         = {COAL01, COAL02, COAL03, COAL04, COAL05,
            COAL06, COAL07, COAL08, COAL09, COAL10, COALDEL};
-
-    int y, i, dy = 0;
-
+*/
+    int y, i, dy, x_min, x_max, x_polynome, y_offset, height, height_max = 0;
+    y_offset = LINES - D51HEIGHT;
+    height_max = y_offset + D51HEIGHT/2;
+    //le polynome a utiliser est: a(x - x_min)(x - x_max)
+    // = ax^2 -ax(x_min+x_max) + ax_min*x_max
+    // hauteur max = (x_min+x_max)/2 et on veut que ca soit height_max
+    x_max = 50;
+    x_min = 0;
+    float h_max = (float)(x_min+x_max)/2.0;
+    float facteur = (float) height_max /h_max;
+    if (y_offset < -5) return ERR;
+    
     if (x < - D51LENGTH)  return ERR;
-    y = LINES / 2 - 5;
+    x_polynome = (x+100*(x_max-x_min)) % (x_max - x_min);
+    height = height_max - (int) (facteur * (float)(x_polynome*x_polynome - x_polynome*(x_min + x_max) + x_min*x_max));
+    //y = LINES / 2 - 20;
 
-    if (FLY == 1) {
+    /*if (FLY == 1) {
         y = (x / 7) + LINES - (COLS / 7) - D51HEIGHT;
         dy = 1;
-    }
+    }*/
+    y = y_offset - 8*height/600;//(x / 7) + LINES - (COLS / 7) - D51HEIGHT;
     for (i = 0; i <= D51HEIGHT; ++i) {
-        my_mvaddstr(y + i, x, d51[(D51LENGTH + x) % D51PATTERNS][i]);
-        my_mvaddstr(y + i + dy, x + 53, coal[i]);
+        my_mvaddstr(y + i, x, d51[i]);
+        // my_mvaddstr(y + i + dy, x + 53, coal[i]);
     }
-    if (ACCIDENT == 1) {
-        add_man(y + 2, x + 43);
-        add_man(y + 2, x + 47);
-    }
-    add_smoke(y - 1, x + D51FUNNEL);
     return OK;
 }
-
+/*
 int add_C51(int x)
 {
     static char *c51[C51PATTERNS][C51HEIGHT + 1]
@@ -292,4 +260,4 @@ void add_smoke(int y, int x)
         S[sum].ptrn = 0; S[sum].kind = sum % 2;
         sum ++;
     }
-}
+}*/
